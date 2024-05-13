@@ -33,6 +33,26 @@ public:
     }
 };
 
+//Code-2
+class Solution {
+public:
+    int matrixScore(vector<vector<int>>& grid) {
+        int n=grid.size(),m=grid[0].size();
+        int ans=pow(2,m-1)*n;
+        for(int i=1;i<m;i++){
+            int c=0;
+            for(int j=0;j<n;j++){
+                if(grid[j][i]==grid[j][0])
+                    c++;
+            }
+            c=max(c,(n-c));
+            ans+=pow(2,m-i-1)*c;
+        }
+        return ans;
+        
+    }
+};
+
 /*
     You are given an m x n binary matrix grid.
     A move consists of choosing any row or column and toggling each value in that row or column (i.e., changing all 0's to 1's, and all 1's to 0's).
